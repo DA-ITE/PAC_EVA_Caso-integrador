@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Caso Integrador · Aplicación real en aula | SISE</title>
+
+<style>
+:root{
+  --red:#FF0E49;
+  --red-dark:#D9003E;
+  --dark:#241F21;
+  --dark2:#30282B;
+  --wine:#6B1E36;
+  --soft:#FFF1F5;
+  --paper:#F8F6F7;
+  --border:#E7E1E3;
+  --text:#241F21;
+  --muted:#625A5D;
+  --green:#187451;
+  --green-soft:#EDF8F3;
+  --white:#FFFFFF;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  background:#FFFFFF;
+}
+
+body{
+  padding:20px;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+}
+
+button,
+input,
+textarea{
+  font:inherit;
+}
+
+#caso-integrador{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:32px;
+  border-radius:14px;
+  color:#FFFFFF;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--dark) 0%,
+      var(--dark2) 58%,
+      var(--wine) 140%
+    );
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  right:-105px;
+  top:-145px;
+  border:2px solid rgba(255,255,255,.11);
+  border-radius:50%;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:880px;
+}
+
+.badge{
+  display:inline-block;
+  margin-bottom:11px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:var(--red);
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  margin:0;
+  color:#FFFFFF;
+  font-size:clamp(34px,5vw,50px);
+  line-height:1.03;
+  font-weight:900;
+}
+
+.hero h1 span{
+  color:var(--red);
+}
+
+.hero p{
+  max-width:820px;
+  margin:14px 0 0;
+  color:#F4ECEF;
+  font-size:16px;
+  line-height:1.65;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.notice{
+  margin-top:16px;
+  padding:18px 20px;
+  border:1px solid #F7D4E0;
+  border-left:6px solid var(--red);
+  border-radius:10px;
+  background:var(--soft);
+}
+
+.notice strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--red);
+  font-size:16px;
+}
+
+.notice p{
+  margin:0;
+  color:#403A3C;
+  font-size:14.5px;
+  line-height:1.6;
+}
+
+
+/* =========================
+   RUTA
+========================= */
+
+.section{
+  margin-top:26px;
+}
+
+.section-label{
+  display:block;
+  margin-bottom:4px;
+  color:var(--red);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.section h2{
+  margin:0 0 7px;
+  color:var(--dark);
+  font-size:28px;
+  line-height:1.12;
+}
+
+.section-intro{
+  margin:0 0 15px;
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+}
+
+.route{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
+
+.route-card{
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:#FFFFFF;
+}
+
+.route-card.final{
+  border:2px solid var(--red);
+  background:var(--soft);
+}
+
+.route-num{
+  display:flex;
+  width:32px;
+  height:32px;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:8px;
+  border-radius:50%;
+  background:var(--dark);
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:900;
+}
+
+.route-card.final .route-num{
+  background:var(--red);
+}
+
+.route-card small{
+  display:block;
+  margin-bottom:3px;
+  color:var(--red);
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.route-card strong{
+  display:block;
+  margin-bottom:4px;
+  font-size:15px;
+}
+
+.route-card p{
+  margin:0;
+  color:#5A5255;
+  font-size:12.5px;
+  line-height:1.45;
+}
+
+
+/* =========================
+   PLANTILLA
+========================= */
+
+.block{
+  margin-top:18px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:11px;
+  background:#FFFFFF;
+}
+
+.block-head{
+  padding:16px 18px;
+  background:var(--dark);
+  color:#FFFFFF;
+}
+
+.block-head small{
+  display:block;
+  margin-bottom:3px;
+  color:#FFB6CA;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.block-head h3{
+  margin:0;
+  font-size:21px;
+}
+
+.block-body{
+  padding:18px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field:last-child{
+  margin-bottom:0;
+}
+
+.field label{
+  display:block;
+  margin-bottom:6px;
+  color:var(--dark);
+  font-size:14px;
+  font-weight:900;
+}
+
+.field small{
+  display:block;
+  margin:-2px 0 7px;
+  color:var(--muted);
+  font-size:12.5px;
+}
+
+.field input,
+.field textarea{
+  width:100%;
+  padding:11px 12px;
+  border:1px solid #D4CCCF;
+  border-radius:8px;
+  color:var(--text);
+  background:#FFFFFF;
+  line-height:1.5;
+}
+
+.field textarea{
+  min-height:105px;
+  resize:vertical;
+}
+
+.field textarea.large{
+  min-height:165px;
+}
+
+.field input:focus,
+.field textarea:focus{
+  outline:3px solid rgba(255,14,73,.12);
+  border-color:var(--red);
+}
+
+.two-cols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+
+/* =========================
+   IMÁGENES
+========================= */
+
+.image-zone{
+  padding:18px;
+  border:2px dashed #D9C8CE;
+  border-radius:10px;
+  background:#FCFAFB;
+}
+
+.image-zone strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--dark);
+}
+
+.image-zone p{
+  margin:0 0 12px;
+  color:var(--muted);
+  font-size:13.5px;
+  line-height:1.5;
+}
+
+.image-input{
+  width:100%;
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#FFFFFF;
+}
+
+.image-info{
+  margin-top:10px;
+  padding:11px 13px;
+  border-left:4px solid var(--red);
+  border-radius:7px;
+  background:var(--soft);
+  color:#514A4D;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.image-preview{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+
+.preview-card{
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:#FFFFFF;
+}
+
+.preview-card img{
+  display:block;
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  background:#EEEEEE;
+}
+
+.preview-caption{
+  padding:10px 12px;
+}
+
+.preview-caption input{
+  width:100%;
+  padding:8px 9px;
+  border:1px solid #D4CCCF;
+  border-radius:6px;
+  font-size:13px;
+}
+
+
+/* =========================
+   REFLEXIÓN
+========================= */
+
+.questions{
+  margin-bottom:14px;
+  padding:15px 17px;
+  border-left:5px solid var(--red);
+  border-radius:8px;
+  background:var(--paper);
+}
+
+.questions strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--red);
+}
+
+.questions ul{
+  margin:0;
+  padding-left:20px;
+}
+
+.questions li{
+  margin:5px 0;
+  color:#514A4D;
+  font-size:13.5px;
+  line-height:1.45;
+}
+
+
+/* =========================
+   COEVALUACIÓN
+========================= */
+
+.coeval-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.coeval-card{
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:9px;
+}
+
+.coeval-card strong{
+  display:block;
+  margin-bottom:4px;
+  color:var(--red);
+}
+
+.coeval-card p{
+  margin:0;
+  color:#514A4D;
+  font-size:13.5px;
+  line-height:1.5;
+}
+
+
+/* =========================
+   CHECKLIST
+========================= */
+
+.checklist{
+  margin-top:22px;
+  padding:19px;
+  border:1px solid var(--border);
+  border-radius:11px;
+  background:var(--paper);
+}
+
+.checklist h2{
+  margin:0 0 12px;
+  font-size:24px;
+}
+
+.check-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-bottom:8px;
+  padding:11px 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#FFFFFF;
+}
+
+.check-item:last-child{
+  margin-bottom:0;
+}
+
+.check-item input{
+  width:18px;
+  height:18px;
+  min-width:18px;
+  margin-top:2px;
+  accent-color:var(--red);
+}
+
+.check-item label{
+  color:#403A3C;
+  font-size:14px;
+  line-height:1.45;
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+.download-panel{
+  margin-top:20px;
+  padding:20px;
+  border-radius:11px;
+  background:var(--dark);
+  color:#FFFFFF;
+}
+
+.download-panel small{
+  display:block;
+  margin-bottom:4px;
+  color:#FFB6CA;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.download-panel h2{
+  margin:0 0 7px;
+  color:#FFFFFF;
+  font-size:24px;
+}
+
+.download-panel p{
+  margin:0;
+  color:#F3EBEE;
+  font-size:14px;
+  line-height:1.55;
+}
+
+.download-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.download-btn{
+  min-height:45px;
+  padding:11px 17px;
+  border:0;
+  border-radius:8px;
+  background:var(--red);
+  color:#FFFFFF;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.download-btn:hover{
+  background:var(--red-dark);
+}
+
+.download-btn.secondary{
+  border:1px solid rgba(255,255,255,.35);
+  background:transparent;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+  display:none;
+  margin-top:12px;
+  padding:11px 13px;
+  border-radius:8px;
+  background:var(--green-soft);
+  color:#18543F;
+  font-size:13px;
+}
+
+.status.show{
+  display:block;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+  .route{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .image-preview,
+  .coeval-grid,
+  .two-cols{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:520px){
+
+  body{
+    padding:12px;
+  }
+
+  .hero{
+    padding:24px 20px;
+  }
+
+  .route{
+    grid-template-columns:1fr;
+  }
+
+  .download-actions{
+    flex-direction:column;
+  }
+
+  .download-btn{
+    width:100%;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<main id="caso-integrador">
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="badge">
+      CASO INTEGRADOR · CIERRE DEL PROCESO FORMATIVO
+    </div>
+
+    <h1>
+      De la mejora diseñada a la
+      <span>aplicación real en aula</span>
+    </h1>
+
+    <p>
+      Recupera todo el recorrido desarrollado desde AA1,
+      aplica en un contexto real la estrategia integrada en AA4,
+      documenta la experiencia con evidencias de aula
+      y analiza qué aprendiste de su implementación.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="notice">
+
+  <strong>
+    El Caso Integrador recupera todo tu proceso
+  </strong>
+
+  <p>
+    No empiezas una nueva evaluación.
+    Trabajas con el mismo curso, resultado de aprendizaje
+    y estrategia que has mejorado progresivamente.
+    Aquí debes demostrar qué ocurrió cuando la propuesta
+    finalmente se llevó a la práctica.
+  </p>
+
+</section>
+
+
+<!-- =========================
+     RUTA COMPLETA
+========================= -->
+
+<section class="section">
+
+  <span class="section-label">
+    Trazabilidad del proceso
+  </span>
+
+  <h2>
+    AA1 → AA2 → AA3 → AA4 → Caso Integrador
+  </h2>
+
+  <p class="section-intro">
+    El producto final debe permitir reconocer esta evolución.
+  </p>
+
+
+  <div class="route">
+
+    <article class="route-card">
+
+      <div class="route-num">01</div>
+
+      <small>AA1</small>
+
+      <strong>Diagnostiqué</strong>
+
+      <p>
+        Identifiqué una brecha en una evaluación real.
+      </p>
+
+    </article>
+
+
+    <article class="route-card">
+
+      <div class="route-num">02</div>
+
+      <small>AA2</small>
+
+      <strong>Rediseñé</strong>
+
+      <p>
+        Convertí la evidencia en una propuesta auténtica.
+      </p>
+
+    </article>
+
+
+    <article class="route-card">
+
+      <div class="route-num">03</div>
+
+      <small>AA3</small>
+
+      <strong>Construí</strong>
+
+      <p>
+        Diseñé y validé el instrumento de evaluación.
+      </p>
+
+    </article>
+
+
+    <article class="route-card">
+
+      <div class="route-num">04</div>
+
+      <small>AA4</small>
+
+      <strong>Integré</strong>
+
+      <p>
+        Organicé la estrategia final y su plan de implementación.
+      </p>
+
+    </article>
+
+
+    <article class="route-card final">
+
+      <div class="route-num">05</div>
+
+      <small>Caso Integrador</small>
+
+      <strong>Apliqué y analicé</strong>
+
+      <p>
+        Implementé la estrategia, recogí evidencias y decidí mejoras.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     1 TRAZABILIDAD
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 01
+    </small>
+
+    <h3>
+      Trazabilidad AA1 → AA4
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="two-cols">
+
+      <div class="field">
+
+        <label for="curso">
+          Curso
+        </label>
+
+        <input
+          id="curso"
+          type="text"
+          placeholder="Nombre del curso">
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="resultado">
+          Resultado de aprendizaje
+        </label>
+
+        <input
+          id="resultado"
+          type="text"
+          placeholder="Resultado trabajado durante el curso">
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="aa1">
+        AA1 · Brecha diagnosticada
+      </label>
+
+      <textarea
+        id="aa1"
+        placeholder="Sintetiza la brecha que identificaste al inicio."></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="aa2">
+        AA2 · Evidencia auténtica rediseñada
+      </label>
+
+      <textarea
+        id="aa2"
+        placeholder="Resume la evidencia auténtica que construiste."></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="aa3">
+        AA3 · Instrumento construido
+      </label>
+
+      <textarea
+        id="aa3"
+        placeholder="Indica qué instrumento construiste y validaste."></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="aa4">
+        AA4 · Estrategia final
+      </label>
+
+      <textarea
+        id="aa4"
+        placeholder="Resume qué estrategia dejaste lista para implementar."></textarea>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     2 IMPLEMENTACIÓN
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 02
+    </small>
+
+    <h3>
+      Aplicación realizada en aula
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="two-cols">
+
+      <div class="field">
+
+        <label for="modalidad">
+          Modalidad / sección
+        </label>
+
+        <input
+          id="modalidad"
+          type="text"
+          placeholder="Presencial, virtual, híbrida, sección...">
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="fecha">
+          Fecha de aplicación
+        </label>
+
+        <input
+          id="fecha"
+          type="date">
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="proposito">
+        Propósito de la aplicación
+      </label>
+
+      <textarea
+        id="proposito"
+        placeholder="¿Qué buscabas observar o valorar durante esta experiencia?"></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="aplicado">
+        ¿Qué parte de la AA4 aplicaste?
+      </label>
+
+      <textarea
+        id="aplicado"
+        placeholder="Describe qué evidencia, actividad o parte significativa de la estrategia llevaste realmente al aula."></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="ajustesDurante">
+        ¿Realizaste algún ajuste durante la implementación?
+      </label>
+
+      <textarea
+        id="ajustesDurante"
+        placeholder="Si modificaste tiempos, consignas, recursos o condiciones, explica brevemente qué cambió y por qué."></textarea>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     3 IMÁGENES
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 03 · OBLIGATORIO
+    </small>
+
+    <h3>
+      Evidencias en imágenes de la implementación
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="image-zone">
+
+      <strong>
+        Sube entre 2 y 4 imágenes de la experiencia real
+      </strong>
+
+      <p>
+        Puedes incluir fotografías del desarrollo,
+        capturas de Canvas, evidencias de la actividad,
+        fragmentos anonimizados de productos
+        o registros visuales que permitan reconocer
+        que la estrategia fue implementada.
+      </p>
+
+
+      <input
+        class="image-input"
+        type="file"
+        id="imageUpload"
+        accept="image/*"
+        multiple>
+
+
+      <div class="image-info">
+        <strong>Privacidad:</strong>
+        evita incluir nombres completos, códigos,
+        correos u otros datos personales.
+        Si aparecen estudiantes, utiliza únicamente imágenes
+        cuya utilización corresponda a las condiciones institucionales
+        aplicables y procura priorizar evidencias donde no sea necesario
+        identificar personas.
+      </div>
+
+
+      <div
+        class="image-preview"
+        id="imagePreview">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     4 INSTRUMENTO
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 04
+    </small>
+
+    <h3>
+      Instrumento aplicado
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="field">
+
+      <label for="instrumentoTipo">
+        Tipo de instrumento utilizado
+      </label>
+
+      <input
+        id="instrumentoTipo"
+        type="text"
+        placeholder="Rúbrica, lista de cotejo, guía de observación...">
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="instrumentoAplicado">
+        Instrumento realmente utilizado
+      </label>
+
+      <textarea
+        id="instrumentoAplicado"
+        class="large"
+        placeholder="Pega aquí los criterios, niveles o condiciones del instrumento que utilizaste durante la aplicación."></textarea>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     5 FEEDBACK
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 05
+    </small>
+
+    <h3>
+      Evidencia de retroalimentación
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="field">
+
+      <label for="feedback">
+        Ejemplo de retroalimentación brindada
+      </label>
+
+      <textarea
+        id="feedback"
+        class="large"
+        placeholder="Registra un ejemplo real de feedback o describe cómo se desarrolló la retroalimentación durante o después de la actividad."></textarea>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     6 IA
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 06
+    </small>
+
+    <h3>
+      Declaración de uso de IA
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="field">
+
+      <label for="iaHerramienta">
+        Herramienta utilizada
+      </label>
+
+      <input
+        id="iaHerramienta"
+        type="text"
+        placeholder="Si no utilizaste IA, escribe: No se utilizó.">
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="iaProposito">
+        Propósito
+      </label>
+
+      <textarea
+        id="iaProposito"
+        placeholder="¿Para qué se utilizó la herramienta?"></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="iaVerificacion">
+        Verificación realizada
+      </label>
+
+      <textarea
+        id="iaVerificacion"
+        placeholder="¿Qué información o propuesta verificaste antes de utilizarla?"></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="iaJuicio">
+        Decisión mantenida bajo juicio docente
+      </label>
+
+      <textarea
+        id="iaJuicio"
+        placeholder="¿Qué decisión permaneció bajo tu responsabilidad profesional?"></textarea>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     7 CONCLUSIÓN
+========================= -->
+
+<section class="block">
+
+  <div class="block-head">
+
+    <small>
+      COMPONENTE 07
+    </small>
+
+    <h3>
+      Análisis y conclusión de la experiencia
+    </h3>
+
+  </div>
+
+
+  <div class="block-body">
+
+    <div class="questions">
+
+      <strong>
+        Orienta tu conclusión
+      </strong>
+
+      <ul>
+
+        <li>
+          ¿Qué observaste en el desempeño de los estudiantes?
+        </li>
+
+        <li>
+          ¿Qué parte de la estrategia funcionó como esperabas y por qué?
+        </li>
+
+        <li>
+          ¿Qué dificultad o situación no prevista apareció?
+        </li>
+
+        <li>
+          ¿Qué evidencia sustenta tus conclusiones?
+        </li>
+
+        <li>
+          ¿Qué ajuste concreto realizarás en una próxima aplicación?
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="conclusion">
+        Conclusión de la aplicación
+      </label>
+
+      <small>
+        Extensión sugerida: 150 a 250 palabras.
+      </small>
+
+      <textarea
+        id="conclusion"
+        class="large"
+        placeholder="Analiza lo ocurrido durante la implementación..."></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="cierreProceso">
+        Cierre del proceso AA1 → Caso Integrador
+      </label>
+
+      <textarea
+        id="cierreProceso"
+        placeholder="¿Cómo evolucionó tu evaluación desde la brecha identificada en AA1 hasta la estrategia finalmente aplicada y qué aprendiste de este proceso?"></textarea>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COEVALUACIÓN
+========================= -->
+
+<section class="section">
+
+  <span class="section-label">
+    Coevaluación
+  </span>
+
+  <h2>
+    Revisa la experiencia de un compañero
+  </h2>
+
+  <p class="section-intro">
+    La revisión debe centrarse en el proceso de mejora
+    y en las evidencias de implementación.
+  </p>
+
+
+  <div class="coeval-grid">
+
+    <article class="coeval-card">
+
+      <strong>
+        1. Trazabilidad
+      </strong>
+
+      <p>
+        Comprueba que la experiencia aplicada corresponde
+        al proceso desarrollado desde AA1 hasta AA4.
+      </p>
+
+    </article>
+
+
+    <article class="coeval-card">
+
+      <strong>
+        2. Aplicación real
+      </strong>
+
+      <p>
+        Revisa si las imágenes y demás evidencias
+        permiten reconocer que la estrategia fue implementada.
+      </p>
+
+    </article>
+
+
+    <article class="coeval-card">
+
+      <strong>
+        3. Instrumento y feedback
+      </strong>
+
+      <p>
+        Comprueba que se utilizaron criterios,
+        instrumento y retroalimentación durante la experiencia.
+      </p>
+
+    </article>
+
+
+    <article class="coeval-card">
+
+      <strong>
+        4. Análisis y mejora
+      </strong>
+
+      <p>
+        Revisa si la reflexión utiliza evidencia,
+        identifica dificultades y propone una mejora concreta.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CHECKLIST
+========================= -->
+
+<section class="checklist">
+
+  <h2>
+    Antes de generar tu Caso Integrador
+  </h2>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c1">
+
+    <label for="c1">
+      La experiencia corresponde al mismo proceso trabajado desde AA1.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c2">
+
+    <label for="c2">
+      Expliqué brevemente la evolución AA1 → AA2 → AA3 → AA4.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c3">
+
+    <label for="c3">
+      Registré qué parte de la estrategia apliqué realmente.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c4">
+
+    <label for="c4">
+      Subí entre 2 y 4 imágenes pertinentes de la implementación en aula.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c5">
+
+    <label for="c5">
+      Revisé que las imágenes no expongan datos personales innecesarios.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c6">
+
+    <label for="c6">
+      Incluí el instrumento realmente utilizado.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c7">
+
+    <label for="c7">
+      Incorporé un ejemplo o registro de la retroalimentación brindada.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c8">
+
+    <label for="c8">
+      Declaré el uso de IA, si correspondía.
+    </label>
+
+  </div>
+
+
+  <div class="check-item">
+
+    <input type="checkbox" id="c9">
+
+    <label for="c9">
+      Mi conclusión analiza lo ocurrido y propone un ajuste concreto.
+    </label>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DESCARGA
+========================= -->
+
+<section class="download-panel">
+
+  <small>
+    Producto final
+  </small>
+
+  <h2>
+    Genera tu Caso Integrador
+  </h2>
+
+  <p>
+    El archivo descargable incluirá la trazabilidad desde AA1,
+    la descripción de la implementación,
+    las imágenes cargadas, el instrumento,
+    la retroalimentación, la declaración de IA
+    y la conclusión final.
+    Puedes abrirlo en un navegador y guardarlo posteriormente como PDF.
+  </p>
+
+
+  <div class="download-actions">
+
+    <button
+      type="button"
+      class="download-btn"
+      id="downloadBtn">
+
+      Descargar Caso Integrador
+
+    </button>
+
+
+    <button
+      type="button"
+      class="download-btn secondary"
+      id="previewBtn">
+
+      Ver versión final
+
+    </button>
+
+  </div>
+
+
+  <div
+    class="status"
+    id="status"
+    aria-live="polite">
+  </div>
+
+</section>
+
+
+</main>
+
+
+<script>
+(function(){
+
+  const root =
+    document.getElementById("caso-integrador");
+
+
+  /* =========================
+     IMÁGENES
+  ========================= */
+
+  const upload =
+    root.querySelector("#imageUpload");
+
+  const preview =
+    root.querySelector("#imagePreview");
+
+  let images = [];
+
+
+  function escapeHTML(value){
+
+    return String(value || "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function nl2br(value){
+
+    return escapeHTML(value)
+      .replace(/\n/g,"<br>");
+
+  }
+
+
+  upload.addEventListener(
+    "change",
+    function(){
+
+      const files =
+        Array.from(upload.files);
+
+
+      if(files.length > 4){
+
+        alert(
+          "Selecciona un máximo de 4 imágenes."
+        );
+
+        upload.value = "";
+
+        return;
+
+      }
+
+
+      images = [];
+
+      preview.innerHTML = "";
+
+
+      files.forEach(
+        function(file,index){
+
+          const reader =
+            new FileReader();
+
+
+          reader.onload =
+            function(event){
+
+              images[index] = {
+
+                name:file.name,
+
+                src:event.target.result,
+
+                caption:""
+
+              };
+
+
+              renderImages();
+
+            };
+
+
+          reader.readAsDataURL(file);
+
+        }
+      );
+
+    }
+  );
+
+
+  function renderImages(){
+
+    preview.innerHTML = "";
+
+
+    images.forEach(
+      function(image,index){
+
+        if(!image){
+          return;
+        }
+
+
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "preview-card";
+
+
+        const img =
+          document.createElement("img");
+
+        img.src =
+          image.src;
+
+        img.alt =
+          "Evidencia " + (index + 1);
+
+
+        const caption =
+          document.createElement("div");
+
+        caption.className =
+          "preview-caption";
+
+
+        const input =
+          document.createElement("input");
+
+        input.type =
+          "text";
+
+        input.placeholder =
+          "Describe brevemente qué muestra esta evidencia.";
+
+        input.value =
+          image.caption || "";
+
+
+        input.addEventListener(
+          "input",
+          function(){
+
+            images[index].caption =
+              input.value;
+
+          }
+        );
+
+
+        caption.appendChild(
+          input
+        );
+
+
+        card.appendChild(
+          img
+        );
+
+        card.appendChild(
+          caption
+        );
+
+
+        preview.appendChild(
+          card
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     VALORES
+  ========================= */
+
+  function getValue(id){
+
+    const element =
+      root.querySelector(
+        "#" + id
+      );
+
+
+    return element &&
+           element.value.trim()
+      ? element.value.trim()
+      : "Sin completar";
+
+  }
+
+
+  function entry(label,value){
+
+    return `
+      <div class="entry">
+        <h3>${escapeHTML(label)}</h3>
+        <p>${nl2br(value)}</p>
+      </div>
+    `;
+
+  }
+
+
+  function section(number,title,content){
+
+    return `
+      <section class="final-section">
+
+        <div class="number">
+          ${number}
+        </div>
+
+        <div>
+          <h2>${escapeHTML(title)}</h2>
+          ${content}
+        </div>
+
+      </section>
+    `;
+
+  }
+
+
+  /* =========================
+     DOCUMENTO FINAL
+  ========================= */
+
+  function buildDocument(){
+
+    const checklist = [];
+
+
+    root
+      .querySelectorAll(
+        ".check-item input"
+      )
+      .forEach(
+        function(input){
+
+          const label =
+            root.querySelector(
+              'label[for="' +
+              input.id +
+              '"]'
+            );
+
+
+          checklist.push({
+
+            checked:input.checked,
+
+            text:
+              label.textContent.trim()
+
+          });
+
+        }
+      );
+
+
+    let imageHTML = "";
+
+
+    images.forEach(
+      function(image,index){
+
+        if(!image){
+          return;
+        }
+
+
+        imageHTML += `
+          <figure class="evidence-image">
+
+            <img
+              src="${image.src}"
+              alt="Evidencia ${index + 1}">
+
+            <figcaption>
+              <strong>
+                Evidencia ${index + 1}
+              </strong><br>
+
+              ${
+                escapeHTML(
+                  image.caption ||
+                  "Sin descripción."
+                )
+              }
+            </figcaption>
+
+          </figure>
+        `;
+
+      }
+    );
+
+
+    if(!imageHTML){
+
+      imageHTML =
+        "<p>No se incorporaron imágenes.</p>";
+
+    }
+
+
+    return `
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Caso Integrador · Aplicación real en aula
+</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  padding:35px;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#241F21;
+  line-height:1.55;
+}
+
+.document{
+  max-width:950px;
+  margin:0 auto;
+}
+
+.cover{
+  padding:32px;
+  border-top:8px solid #FF0E49;
+  border-radius:12px;
+  background:
+    linear-gradient(
+      135deg,
+      #241F21 0%,
+      #30282B 55%,
+      #6B1E36 120%
+    );
+  color:#FFFFFF;
+}
+
+.cover small{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:#FF0E49;
+  font-weight:bold;
+}
+
+.cover h1{
+  margin:0;
+  font-size:35px;
+  line-height:1.1;
+}
+
+.cover p{
+  margin:12px 0 0;
+  color:#F4ECEF;
+}
+
+.route{
+  margin-top:20px;
+  padding:16px 18px;
+  border-left:5px solid #FF0E49;
+  border-radius:8px;
+  background:#FFF1F5;
+}
+
+.route strong{
+  color:#FF0E49;
+}
+
+.final-section{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:14px;
+  margin-top:24px;
+  padding-bottom:22px;
+  border-bottom:1px solid #E7E1E3;
+}
+
+.number{
+  display:flex;
+  width:38px;
+  height:38px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#FF0E49;
+  color:#FFFFFF;
+  font-weight:bold;
+}
+
+.final-section h2{
+  margin:4px 0 13px;
+  font-size:24px;
+}
+
+.entry{
+  margin-bottom:13px;
+  padding:14px 16px;
+  border-left:4px solid #FF0E49;
+  border-radius:7px;
+  background:#F8F6F7;
+}
+
+.entry h3{
+  margin:0 0 5px;
+  color:#FF0E49;
+  font-size:14px;
+}
+
+.entry p{
+  margin:0;
+  color:#403A3C;
+}
+
+.images{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.evidence-image{
+  margin:0;
+  border:1px solid #E7E1E3;
+  border-radius:9px;
+  overflow:hidden;
+  break-inside:avoid;
+}
+
+.evidence-image img{
+  display:block;
+  width:100%;
+  max-height:430px;
+  object-fit:contain;
+  background:#F5F5F5;
+}
+
+.evidence-image figcaption{
+  padding:10px 12px;
+  font-size:13px;
+  color:#514A4D;
+}
+
+.checklist{
+  margin-top:25px;
+  padding:18px;
+  border-radius:9px;
+  background:#FFF1F5;
+}
+
+.checklist h2{
+  margin:0 0 12px;
+}
+
+.check-line{
+  margin:7px 0;
+}
+
+.footer{
+  margin-top:26px;
+  padding:18px;
+  border-radius:9px;
+  background:#241F21;
+  color:#FFFFFF;
+}
+
+.footer p{
+  margin:0;
+}
+
+@media print{
+
+  body{
+    padding:0;
+  }
+
+  .final-section,
+  .evidence-image{
+    break-inside:avoid;
+  }
+
+}
+
+@media(max-width:700px){
+
+  body{
+    padding:18px;
+  }
+
+  .images{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="document">
+
+
+<header class="cover">
+
+  <small>
+    CASO INTEGRADOR
+  </small>
+
+  <h1>
+    Aplicación real de la estrategia de evaluación auténtica
+  </h1>
+
+  <p>
+    Cierre del proceso desarrollado desde AA1 hasta la implementación en aula.
+  </p>
+
+</header>
+
+
+<div class="route">
+
+  <strong>
+    Ruta del proceso:
+  </strong>
+
+  AA1 Diagnóstico →
+  AA2 Rediseño →
+  AA3 Instrumento →
+  AA4 Estrategia final →
+  Caso Integrador Aplicación y mejora.
+
+</div>
+
+
+${section(
+  "1",
+  "Trazabilidad del proceso",
+
+  entry(
+    "Curso",
+    getValue("curso")
+  ) +
+
+  entry(
+    "Resultado de aprendizaje",
+    getValue("resultado")
+  ) +
+
+  entry(
+    "AA1 · Brecha diagnosticada",
+    getValue("aa1")
+  ) +
+
+  entry(
+    "AA2 · Evidencia auténtica",
+    getValue("aa2")
+  ) +
+
+  entry(
+    "AA3 · Instrumento",
+    getValue("aa3")
+  ) +
+
+  entry(
+    "AA4 · Estrategia final",
+    getValue("aa4")
+  )
+)}
+
+
+${section(
+  "2",
+  "Aplicación realizada",
+
+  entry(
+    "Modalidad / sección",
+    getValue("modalidad")
+  ) +
+
+  entry(
+    "Fecha",
+    getValue("fecha")
+  ) +
+
+  entry(
+    "Propósito",
+    getValue("proposito")
+  ) +
+
+  entry(
+    "Parte de la AA4 aplicada",
+    getValue("aplicado")
+  ) +
+
+  entry(
+    "Ajustes realizados durante la implementación",
+    getValue("ajustesDurante")
+  )
+)}
+
+
+${section(
+  "3",
+  "Evidencias visuales de implementación",
+
+  `
+  <div class="images">
+    ${imageHTML}
+  </div>
+  `
+)}
+
+
+${section(
+  "4",
+  "Instrumento aplicado",
+
+  entry(
+    "Tipo de instrumento",
+    getValue("instrumentoTipo")
+  ) +
+
+  entry(
+    "Instrumento utilizado",
+    getValue("instrumentoAplicado")
+  )
+)}
+
+
+${section(
+  "5",
+  "Retroalimentación",
+
+  entry(
+    "Evidencia de feedback",
+    getValue("feedback")
+  )
+)}
+
+
+${section(
+  "6",
+  "Uso responsable de IA",
+
+  entry(
+    "Herramienta utilizada",
+    getValue("iaHerramienta")
+  ) +
+
+  entry(
+    "Propósito",
+    getValue("iaProposito")
+  ) +
+
+  entry(
+    "Verificación realizada",
+    getValue("iaVerificacion")
+  ) +
+
+  entry(
+    "Decisión mantenida bajo juicio docente",
+    getValue("iaJuicio")
+  )
+)}
+
+
+${section(
+  "7",
+  "Análisis de la experiencia",
+
+  entry(
+    "Conclusión de la aplicación",
+    getValue("conclusion")
+  ) +
+
+  entry(
+    "Cierre del proceso AA1 → Caso Integrador",
+    getValue("cierreProceso")
+  )
+)}
+
+
+<section class="checklist">
+
+  <h2>
+    Checklist final
+  </h2>
+
+  ${checklist.map(
+    function(item){
+
+      return `
+        <div class="check-line">
+          ${item.checked ? "☑" : "☐"}
+          ${escapeHTML(item.text)}
+        </div>
+      `;
+
+    }
+  ).join("")}
+
+</section>
+
+
+<footer class="footer">
+
+  <p>
+    <strong>Caso Integrador:</strong>
+    este documento evidencia la transferencia del proceso
+    de mejora iniciado en AA1 hacia una aplicación real,
+    documentada y analizada de la estrategia evaluativa.
+  </p>
+
+</footer>
+
+
+</div>
+
+
+</body>
+
+</html>
+`;
+
+  }
+
+
+  /* =========================
+     DESCARGA
+  ========================= */
+
+  const status =
+    root.querySelector("#status");
+
+
+  function validateImages(){
+
+    const count =
+      images.filter(Boolean).length;
+
+
+    if(count < 2){
+
+      status.className =
+        "status show";
+
+      status.textContent =
+        "Antes de generar el Caso Integrador, incorpora al menos 2 imágenes de evidencia de la implementación.";
+
+      return false;
+
+    }
+
+
+    if(count > 4){
+
+      status.className =
+        "status show";
+
+      status.textContent =
+        "El Caso Integrador debe incluir un máximo de 4 imágenes.";
+
+      return false;
+
+    }
+
+
+    return true;
+
+  }
+
+
+  root
+    .querySelector("#downloadBtn")
+    .addEventListener(
+      "click",
+      function(){
+
+        if(!validateImages()){
+          return;
+        }
+
+
+        const html =
+          buildDocument();
+
+
+        const blob =
+          new Blob(
+            [html],
+            {
+              type:"text/html;charset=utf-8"
+            }
+          );
+
+
+        const url =
+          URL.createObjectURL(blob);
+
+
+        const link =
+          document.createElement("a");
+
+
+        link.href =
+          url;
+
+
+        link.download =
+          "Caso_Integrador_Aplicacion_Real.html";
+
+
+        document.body.appendChild(
+          link
+        );
+
+
+        link.click();
+
+        link.remove();
+
+
+        setTimeout(
+          function(){
+
+            URL.revokeObjectURL(url);
+
+          },
+          500
+        );
+
+
+        status.className =
+          "status show";
+
+        status.textContent =
+          "Tu Caso Integrador fue generado correctamente. El archivo incluye las imágenes de implementación cargadas en esta actividad.";
+
+      }
+    );
+
+
+  /* =========================
+     PREVIEW
+  ========================= */
+
+  root
+    .querySelector("#previewBtn")
+    .addEventListener(
+      "click",
+      function(){
+
+        if(!validateImages()){
+          return;
+        }
+
+
+        const html =
+          buildDocument();
+
+
+        const newWindow =
+          window.open(
+            "",
+            "_blank"
+          );
+
+
+        if(newWindow){
+
+          newWindow.document.open();
+
+          newWindow.document.write(
+            html
+          );
+
+          newWindow.document.close();
+
+        }
+        else{
+
+          status.className =
+            "status show";
+
+          status.textContent =
+            "El navegador bloqueó la vista previa. Puedes utilizar directamente el botón de descarga.";
+
+        }
+
+      }
+    );
+
+})();
+</script>
+
+</body>
+</html>
